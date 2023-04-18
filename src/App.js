@@ -6,6 +6,7 @@ import Contact from "./Pages/Contact";
 import Task from "./Pages/Task";
 import Home from "./Pages/Home";
 import Header from "./components/Header";
+import Update from "./components/Update.js";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<Home/>} />
       <Route path="/Contact" element={<Contact/>} />
       <Route path="/Task" element={<Task/>} />
+      <Route path="/update/:id" element={<Update />} />
     </Routes>
     </BrowserRouter>
   );

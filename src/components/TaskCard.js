@@ -1,4 +1,7 @@
 import React, {useEffect} from 'react';
+
+import { useNavigate } from "react-router-dom";
+   
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -9,11 +12,12 @@ import { unstable_composeClasses } from '@mui/material';
 
 export default function TaskCard({
     id,
+    title,
     task,
 
 }) {
 
-  
+  const navigate = useNavigate()
   const taskz = JSON.parse(localStorage.getItem("tasks"))
        
 
@@ -27,10 +31,8 @@ export default function TaskCard({
   };
 
        const handleEdit = async () =>{
-        try{
-            localStorage.removeItem('task');
-        }catch(error){console.log(error)}
-       }
+        navigate(`/update/${id}`)  
+      }
 
    
 
@@ -39,7 +41,7 @@ export default function TaskCard({
     <Card sx={{ maxWidth: 545 }}>
       <CardContent>
          <Typography variant="h5" component="div">
-    Task ID: {id}
+    Task : {title}
   </Typography>
   <Typography sx={{ mb: 1.5 }} color="text.secondary">
     Task Name: {task}

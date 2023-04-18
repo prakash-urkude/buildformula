@@ -4,7 +4,7 @@ import {AppBar, Box, Tab, Tabs} from "@mui/material";
 const Header = () => {
     const [value, setValue] = useState(0)
     return ( 
-        <AppBar position="sticky" style={{ backgroundColor: '#f50057' }}>
+        <AppBar position="sticky" style={{ backgroundColor: 'blue' }}>
                   <Box display={"flex"} marginLeft="auto" marginRight={"auto"}>
                   <Tabs
                   textColor ="inherit"

@@ -89,14 +89,18 @@ const Form = () => {
       onChange={handleChange}
     />
     <TextField
-      placeholder="Phone Number"
-      value={inputs.phone}
-      name="phone"
-      margin="normal"
-      type={"tel"}
-      required
-      onChange={handleChange}
-    />
+  placeholder="Phone Number"
+  value={inputs.phone}
+  name="phone"
+  margin="normal"
+  type="tel"
+  required
+  onChange={handleChange}
+  inputProps={{
+    pattern: "^\\d{10}$",
+    title: "10-digit phone number enter please" 
+  }}
+/>
     <Button
       type="submit"
       sx={{ borderRadius: 3, marginTop: 3 }}

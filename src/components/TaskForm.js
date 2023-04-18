@@ -5,35 +5,36 @@ const TaskForm = () => {
     
   const [inputs, setInputs] = useState({
     task: "",
+    title:"",
   });
   
   const handleSubmit = async (e) => {
     e.preventDefault();
   
     try {
-      // retrieve existing array of tasks or create a new empty array
+      
       const existingTasks = await JSON.parse(localStorage.getItem("tasks")) || [];
   
       const newTask = {
-        id: Date.now(), // add unique ID for each task (example)
+        id: Date.now(), 
+        title:inputs.title,
         name: inputs.task,
-        // any other properties you want to include
+        
       };
   
-      // add new task to existing array of tasks
+      
       existingTasks.push(newTask);
-  
-      // save updated array of tasks back to localStorage
       await localStorage.setItem("tasks", JSON.stringify(existingTasks));
   
       window.alert("Task Added.");
       console.log(localStorage)
       setInputs({
         task: "",
+        title:"",
       });
     } catch (error) {
-      console.error(error);
-      // handle the error
+      console.log(error);
+      
     }
   };
   
@@ -69,6 +70,15 @@ const TaskForm = () => {
   Task
 </Typography>
 
+<TextField
+      placeholder="Title"
+      value={inputs.title}
+      name="title"
+      margin="normal"
+      type="text"
+      required
+      onChange={handleChange}
+    />
     <TextField
       placeholder="Task"
       value={inputs.task}
