@@ -3,16 +3,20 @@ import {Box, TextField, Button, Typography, CardMedia} from "@mui/material"
 import { useNavigate, useParams } from "react-router-dom";
    
 const Update = () => {
-  const [inputs, setInputs] = useState({ title: "", task: "" });
+  const [inputs, setInputs] = useState({task:"", title:""});
 
     const id = useParams().id;
     const navigate = useNavigate();
-console.log(id)
+console.log(inputs)
+
 useEffect(() => {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   const task = tasks.find((x) => x.id === id);
-  setInputs(task);
+  if (task) {
+    setInputs(task);
+  }
 }, [id]);
+
 
 const handleChange = (e) => {
   setInputs((prevState) => ({
@@ -20,16 +24,17 @@ const handleChange = (e) => {
     [e.target.name]: e.target.value,
   }));
 };
-
+console.log(inputs)
 const handleSubmit = (e) => {
   e.preventDefault();
   try {
     const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
     const updatedTasks = tasks.map((x) =>
-      x.id === id ? { ...x, title: inputs.title, task: inputs.task } : x
+      x.id !== id ? { ...x, title: inputs.title, task: inputs.task } : x
     );
+    console.log(updatedTasks)
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-    navigate("/");
+    navigate("/Task");
   } catch (error) {
     console.log(error);
   }

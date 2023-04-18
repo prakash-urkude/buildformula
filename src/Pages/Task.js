@@ -12,7 +12,7 @@ const Task = () => {
 
   useEffect(() => {
     getAllTodos();
-  }, []);
+  }, [todos]);
 
   return (
     <div>

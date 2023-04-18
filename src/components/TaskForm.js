@@ -18,7 +18,7 @@ const TaskForm = () => {
       const newTask = {
         id: Date.now(), 
         title:inputs.title,
-        name: inputs.task,
+        task: inputs.task,
         
       };
   
@@ -67,7 +67,7 @@ const TaskForm = () => {
     backgroundColor= "white"
   >
     <Typography variant="h5" fontWeight="bold" padding="2%" color="gray" sx={{ marginBottom: 2 }}>
-  Task
+  Add Task
 </Typography>
 
 <TextField
